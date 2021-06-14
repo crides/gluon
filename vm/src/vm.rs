@@ -664,8 +664,7 @@ impl GlobalVmState {
     #[doc(hidden)]
     pub fn get_cache_alias(&self, name: &str) -> Option<ArcType> {
         let env = self.env.read();
-        env
-            .type_infos
+        env.type_infos
             .id_to_type
             .get(name)
             .map(|alias| alias.clone().into_type())

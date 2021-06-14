@@ -266,6 +266,16 @@ let parse p input : Parser a -> String -> Result String a =
     | Ok ok -> Ok ok.value
     | Err err -> Err (int.show.show err.position <> ":" <> err.message)
 
+/// Parses `input` using `p`, but requires that `p` consumes the whole input
+let parse_full p input : Parser a -> String -> Result String a =
+    match p { start = 0, end = string.len input, buffer = input } with
+    | Ok res ->
+        if res.buffer.start == (string.len input) then
+            Ok res.value
+        else
+            Err ("Unconsumed input: " ++ show (string.slice input res.buffer.start (string.len input)))
+    | Err err -> Err (int.show.show err.position <> ":" <> err.message)
+
 {
     Position,
     Error,
@@ -308,4 +318,5 @@ let parse p input : Parser a -> String -> Result String a =
     tab,
 
     parse,
+    parse_full,
 }

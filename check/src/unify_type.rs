@@ -8,9 +8,9 @@ use crate::base::{
     merge, pos,
     resolve::{self, Error as ResolveError},
     symbol::{Symbol, SymbolRef},
-    types::{AsId,
-        self, walk_type, AppVec, ArgType, Field, Filter, SharedInterner, Skolem, Type, TypeContext,
-        TypeEnv, TypeExt, TypeFormatter, TypePtr, TypeVariable,
+    types::{
+        self, walk_type, AppVec, ArgType, AsId, Field, Filter, SharedInterner, Skolem, Type,
+        TypeContext, TypeEnv, TypeExt, TypeFormatter, TypePtr, TypeVariable,
     },
 };
 

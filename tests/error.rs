@@ -134,5 +134,6 @@ fn module_imports_provide_a_type_despite_internal_errors() {
         2 │         let { Test } = import! test
           │                        ^^^^^^^^^^^^
 
-    "#]].assert_eq(&result.unwrap_err().to_string());
+    "#]]
+    .assert_eq(&result.unwrap_err().to_string());
 }

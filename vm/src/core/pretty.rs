@@ -218,13 +218,10 @@ impl<'a> Expr<'a> {
                         ]
                     }
                     (Pattern::Record { .. }, _) => {
-                        let doc = chain![arena,
+                        let doc = chain![
+                            arena,
                             "let ",
-                            chain![arena,
-                                alt.pattern.pretty(arena),
-                                arena.space(),
-                                "="
-                            ].group(),
+                            chain![arena, alt.pattern.pretty(arena), arena.space(), "="].group(),
                             expr.pretty(arena, Prec::Top).nest(INDENT),
                             arena.hardline(),
                             "in",
